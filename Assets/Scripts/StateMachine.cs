@@ -51,7 +51,8 @@ public class StateMachine : MonoBehaviour
     private GameState oldState;
     [SerializeField]
     private Text nomStudio;
-
+    [SerializeField]
+    private Text winWave;
     [SerializeField]
     private AudioClip menuMusic, victoryMusic, defeatMusic;
     [SerializeField]
@@ -75,6 +76,7 @@ public class StateMachine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        winWave.gameObject.SetActive(false);
         aSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(this.gameObject);
         oldState = currentState;
@@ -150,6 +152,20 @@ public class StateMachine : MonoBehaviour
         }
     }
 
+    public void activateWinWaveTExt()
+    {
+        winWave.gameObject.SetActive(true);
+    }
+
+    public void deactivateWinWaveText()
+    {
+        winWave.gameObject.SetActive(true);
+    }
+
+    public void modifyWinWaveText(string newTExt)
+    {
+        winWave.text = newTExt;
+    }
 
     #region enterStateFunction
     private void onEnterMenuState()

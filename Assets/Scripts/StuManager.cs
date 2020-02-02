@@ -94,11 +94,19 @@ public class StuManager : MonoBehaviour
 
     private IEnumerator waitBeforeRestart()
     {
+        StateMachine.Instance.activateWinWaveTExt();
+        string s = "You beat wave " + (levelReplay) + ", next wave in 3 seconds";
+        StateMachine.Instance.modifyWinWaveText(s);
         yield return new WaitForSeconds(1);
+        s = "You beat wave " + (levelReplay) + ", next wave in 2 seconds";
+        StateMachine.Instance.modifyWinWaveText(s);
         GameObject temp = playerInstance;
         playerInstance = null;
         Destroy(temp);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
+        s = "You beat wave " + (levelReplay) + ", next wave in 1 seconds";
+        StateMachine.Instance.modifyWinWaveText(s);
+        yield return new WaitForSeconds(1);
         Start();
     }
 
